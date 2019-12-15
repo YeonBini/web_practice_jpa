@@ -1,4 +1,4 @@
-package jpabook.jpashop.domain.status;
+package jpabook.jpashop.status;
 
 public enum DeleveryStatus {
     READY, COMPLETE

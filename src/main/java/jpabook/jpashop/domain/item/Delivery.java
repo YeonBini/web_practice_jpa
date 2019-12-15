@@ -1,6 +1,6 @@
 package jpabook.jpashop.domain.item;
 
-import jpabook.jpashop.domain.status.DeleveryStatus;
+import jpabook.jpashop.status.DeleveryStatus;
 import lombok.Getter;
 import lombok.Setter;
 

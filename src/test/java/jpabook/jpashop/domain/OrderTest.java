@@ -2,8 +2,8 @@ package jpabook.jpashop.domain;
 
 import jpabook.jpashop.domain.item.Member;
 import jpabook.jpashop.domain.item.Order;
-import jpabook.jpashop.domain.repository.MemberRepository;
-import jpabook.jpashop.domain.repository.OrderRepository;
+import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.repository.OrderRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
