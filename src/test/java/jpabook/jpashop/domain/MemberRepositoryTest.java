@@ -29,7 +29,7 @@ public class MemberRepositoryTest {
 
         // when
         Long savedId = repository.save(member);
-        Member findedMember = repository.find(savedId);
+        Member findedMember = repository.findOne(savedId);
 
         // then
         assertThat(findedMember.equals(member));
