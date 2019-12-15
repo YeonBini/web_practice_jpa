@@ -1,19 +1,22 @@
-package jpabook.jpashop.domain;
+package jpabook.jpashop.domain.item;
 
+import jpabook.jpashop.domain.status.DeleveryStatus;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Getter @Setter
-public class Delevery {
+public class Delivery {
 
     @Id @GeneratedValue
-    @Column(name = "delevery_id")
+    @Column(name = "delivery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delevery")
+    @OneToOne(mappedBy = "delivery", fetch = LAZY)
     private Order order;
 
     @Embedded
