@@ -1,12 +1,14 @@
 package jpabook.jpashop.domain.item;
 
-import jpabook.jpashop.domain.exception.NotEnoughStockException;
+import jpabook.jpashop.domain.Category;
+import jpabook.jpashop.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -45,6 +47,20 @@ public abstract class Item {
         this.stockQuantity -= quantity;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return price == item.price &&
+                stockQuantity == item.stockQuantity &&
+                Objects.equals(id, item.id) &&
+                Objects.equals(name, item.name) &&
+                Objects.equals(categories, item.categories);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price, stockQuantity, categories);
+    }
 }

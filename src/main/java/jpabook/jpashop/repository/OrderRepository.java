@@ -1,38 +1,34 @@
 package jpabook.jpashop.repository;
 
-import jpabook.jpashop.domain.item.Order;
+import jpabook.jpashop.domain.Order;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.List;
 
 @Repository
-@Transactional
+@RequiredArgsConstructor
 public class OrderRepository  {
 
-    @PersistenceContext
-    private EntityManager em;
+    private final EntityManager em;
 
-    public Long save(Order order) {
+    public void save(Order order) {
         em.persist(order);
-        return order.getId();
     }
 
-    public Order find(Long id) {
+    public Order findOne(Long id) {
         return em.find(Order.class, id);
     }
 
-    public List<Order> findAll() {
-        return em.createQuery("select o from Order o", Order.class).getResultList();
-    }
+//    public List<Order> findAllByCriteria(OrderSearch orderSearch) {
+        // 동적 쿼리 문제 해결 필요
+//        return em.createQuery("select o from Order o join o.member m " +
+//                "where o.orderStatus = :status " +
+//                "and m.name like :name", Order.class)
+//                .setParameter("status", orderSearch.getOrderStatus())
+//                .setParameter("name", orderSearch.getMemberName())
+//                .setMaxResults(1000)
+//                .getResultList();
+//    }
 
-    public void deleteAll() {
-        List<Order> orders = findAll();
-        orders.stream()
-                .forEach(order -> {
-                    em.remove(order);
-                });
-    }
 }
