@@ -15,23 +15,23 @@ public class OrderItemTest {
 
     @Test
     public void streamTest() {
-        // given
-        OrderItem orderItem1 = new OrderItem();
-        orderItem1.setCount(2);
-        orderItem1.setOrderPrice(10);
-
-        OrderItem orderItem2 = new OrderItem();
-        orderItem2.setCount(2);
-        orderItem2.setOrderPrice(20);
-
-        Order order = new Order();
-        order.addOrderItem(orderItem1);
-        order.addOrderItem(orderItem2);
-
-        // when
-        int totalPrice = order.getTotalPrice();
-
-        // then
-        assertEquals(totalPrice, 60);
+//        // given
+//        OrderItem orderItem1 = new OrderItem();
+//        orderItem1.setCount(2);
+//        orderItem1.setOrderPrice(10);
+//
+//        OrderItem orderItem2 = new OrderItem();
+//        orderItem2.setCount(2);
+//        orderItem2.setOrderPrice(20);
+//
+//        Order order = new Order();
+//        order.addOrderItem(orderItem1);
+//        order.addOrderItem(orderItem2);
+//
+//        // when
+//        int totalPrice = order.getTotalPrice();
+//
+//        // then
+//        assertEquals(totalPrice, 60);
     }
 }
