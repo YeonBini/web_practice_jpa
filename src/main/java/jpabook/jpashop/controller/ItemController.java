@@ -68,16 +68,13 @@ public class ItemController {
     public String updateItem(@PathVariable("itemId") Long id,
             @ModelAttribute("form") BookForm form, // 화면에서 form이라는 이름으로 모델이 넘어오기 때문에 ModelAttribute 설정을 해주어야한다.
                              Model model) {
-        Book book = new Book();
-        book.setId(form.getId());
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setAuthor(form.getAuthor());
-        book.setIsbn(form.getIsbn());
-
-        itemService.saveItem(book);
-
+        
+        itemService.updateItem(form.getId(),ItemService.BookUpdate.builder()
+                                          .name(form.getName())
+                                          .price(form.getPrice())
+                                          .stockQuantity(form.getStockQuantity())
+                                          .author(form.getAuthor())
+                                          .isbn(form.getIsbn()).build());
         return "redirect:/items";
     }
 

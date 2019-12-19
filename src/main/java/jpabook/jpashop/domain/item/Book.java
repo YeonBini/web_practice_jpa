@@ -2,6 +2,7 @@ package jpabook.jpashop.domain.item;
 
 import jpabook.jpashop.domain.Category;
 import jpabook.jpashop.dto.BookForm;
+import jpabook.jpashop.service.ItemService;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,4 +31,11 @@ public class Book extends Item{
         return book;
     }
 
+    public void updateBook(ItemService.BookUpdate form) {
+        this.setName(form.getName());
+        this.setPrice(form.getPrice());
+        this.setStockQuantity(form.getStockQuantity());
+        this.setAuthor(form.getAuthor());
+        this.setIsbn(form.getIsbn());
+    }
 }
