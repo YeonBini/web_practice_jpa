@@ -1,15 +1,14 @@
 package jpabook.jpashop.domain.item;
 
-import jpabook.jpashop.domain.Category;
 import jpabook.jpashop.dto.BookForm;
 import jpabook.jpashop.service.ItemService;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import java.util.List;
+
+import jpabook.jpashop.service.ItemService.BookUpdate;
 
 @Entity
 @DiscriminatorValue("B")
@@ -31,7 +30,7 @@ public class Book extends Item{
         return book;
     }
 
-    public void updateBook(ItemService.BookUpdate form) {
+    public void updateBook(BookUpdate form) {
         this.setName(form.getName());
         this.setPrice(form.getPrice());
         this.setStockQuantity(form.getStockQuantity());

@@ -32,3 +32,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### 초기 데이터 ###
+src/main/resources/data.sql

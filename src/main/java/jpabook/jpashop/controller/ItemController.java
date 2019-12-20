@@ -4,6 +4,7 @@ import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.dto.BookForm;
 import jpabook.jpashop.service.ItemService;
+import jpabook.jpashop.service.ItemService.BookUpdate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,7 +70,7 @@ public class ItemController {
             @ModelAttribute("form") BookForm form, // 화면에서 form이라는 이름으로 모델이 넘어오기 때문에 ModelAttribute 설정을 해주어야한다.
                              Model model) {
         
-        itemService.updateItem(form.getId(),ItemService.BookUpdate.builder()
+        itemService.updateItem(form.getId(), BookUpdate.builder()
                                           .name(form.getName())
                                           .price(form.getPrice())
                                           .stockQuantity(form.getStockQuantity())

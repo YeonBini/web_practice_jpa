@@ -39,7 +39,7 @@ public class ItemService {
     }
 
     @Getter
-    public class BookUpdate {
+    public static class BookUpdate {
         String name;
         int price;
         int stockQuantity;
