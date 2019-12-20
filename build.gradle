@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.1.11.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
+    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
 }
 
 group = 'jpabook'
@@ -30,4 +31,34 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compile('com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.8')
+    compile('com.querydsl:querydsl-jpa')
+    compile('com.querydsl:querydsl-apt')
+}
+
+def querydslSrcDir = 'src/main/generated'
+
+querydsl {
+    library = 'com.querydsl:querydsl-apt'
+    jpa = true
+    querydslSourcesDir = querydslSrcDir
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', querydslSrcDir]
+        }
+    }
+}
+
+compileQuerydsl{
+    options.annotationProcessorPath = configurations.querydsl
+}
+
+configurations {
+    querydsl.extendsFrom compileClasspath
 }

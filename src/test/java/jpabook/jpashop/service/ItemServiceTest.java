@@ -32,7 +32,6 @@ public class ItemServiceTest {
         item.setName("jpa");
         item.addStock(10);
 
-
         // when
         itemService.saveItem(item);
         em.flush();
@@ -42,7 +41,7 @@ public class ItemServiceTest {
         em.flush();
 
         // then
-        assertEquals(item, itemService.findOne(1L));
+        assertEquals(item.getId(), itemService.findOne(1L).getId());
     }
 
     @Test(expected = NotEnoughStockException.class)

@@ -1,8 +1,10 @@
 package jpabook.jpashop.repository;
 
-import jpabook.jpashop.domain.Member;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import jpabook.jpashop.domain.*;
 import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.domain.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +16,9 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static jpabook.jpashop.domain.QMember.member;
+import static jpabook.jpashop.domain.QOrder.order;
 
 @Repository
 @RequiredArgsConstructor
@@ -31,7 +36,7 @@ public class OrderRepository  {
     }
 
 //    public List<Order> findAllByCriteria(OrderSearch orderSearch) {
-        // 동적 쿼리 문제 해결 필요
+    // 동적 쿼리 문제 해결 필요
 //        return em.createQuery("select o from Order o join o.member m " +
 //                "where o.orderStatus = :status " +
 //                "and m.name like :name", Order.class)
@@ -42,7 +47,28 @@ public class OrderRepository  {
 //    }
 
     public List<Order> findAllByQueryDsl(OrderSearch orderSearch) {
-        return null;
+//        BooleanBuilder booleanBuilder = new BooleanBuilder();
+//
+//        if(orderSearch.getOrderStatus() != null) {
+//            booleanBuilder.and(order.orderStatus.eq(orderSearch.getOrderStatus()));
+//        }
+//
+//        if(orderSearch.getMemberName() != null) {
+//            booleanBuilder.and(member.name.like(orderSearch.getMemberName()));
+//        }
+
+        JPAQueryFactory jpaQueryFactory = new JPAQueryFactory(em);
+        JPAQuery<Order> orderJPAQuery = jpaQueryFactory.selectFrom(order)
+                .innerJoin(order.member, member);
+
+        if(orderSearch.getOrderStatus() != null) {
+            orderJPAQuery = orderJPAQuery.where(order.orderStatus.eq(orderSearch.getOrderStatus()));
+        }
+
+        if(orderSearch.getMemberName() != null) {
+            orderJPAQuery = orderJPAQuery.where(member.name.like(orderSearch.getMemberName()));
+        }
+        return orderJPAQuery.fetch();
     }
 
     public List<Order> findAllByCriteria(OrderSearch orderSearch) {
