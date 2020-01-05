@@ -35,3 +35,4 @@ out/
 
 ### 초기 데이터 ###
 src/main/resources/data-h2.sql
+myApp.log

@@ -41,4 +41,5 @@ public class MemberRepository {
                     em.remove(member);
                 });
     }
+
 }

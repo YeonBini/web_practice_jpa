@@ -12106,3 +12106,805 @@ create sequence hibernate_sequence start with 1 increment by 1;
 2020-01-05 21:21:25.333  INFO 12074 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2020-01-05 21:21:25.341  INFO 12074 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
 2020-01-05 21:21:25.384  WARN 12074 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public jpabook.jpashop.api.MemberApiController$CreateMemberResponse jpabook.jpashop.api.MemberApiController.saveMemberV2(jpabook.jpashop.api.MemberApiController$CreateMemberRequest): [Field error in object 'createMemberRequest' on field 'name': rejected value [null]; codes [NotEmpty.createMemberRequest.name,NotEmpty.name,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createMemberRequest.name,name]; arguments []; default message [name]]; default message [must not be empty]] ]
+2020-01-05 21:50:15.682 DEBUG 12074 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        member0_.member_id as member_i1_5_,
+        member0_.city as city2_5_,
+        member0_.street as street3_5_,
+        member0_.zipcode as zipcode4_5_,
+        member0_.name as name5_5_ 
+    from
+        member member0_ 
+    where
+        member0_.name=?
+2020-01-05 21:50:15.690 TRACE 12074 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [yeonbn]
+2020-01-05 21:50:15.693  INFO 12074 --- [http-nio-8080-exec-4] p6spy                                    : #1578228615693 | took 1ms | statement | connection 43| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+select member0_.member_id as member_i1_5_, member0_.city as city2_5_, member0_.street as street3_5_, member0_.zipcode as zipcode4_5_, member0_.name as name5_5_ from member member0_ where member0_.name=?
+select member0_.member_id as member_i1_5_, member0_.city as city2_5_, member0_.street as street3_5_, member0_.zipcode as zipcode4_5_, member0_.name as name5_5_ from member member0_ where member0_.name='yeonbn';
+2020-01-05 21:50:15.704 DEBUG 12074 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2020-01-05 21:50:15.707  INFO 12074 --- [http-nio-8080-exec-4] p6spy                                    : #1578228615707 | took 2ms | statement | connection 43| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2020-01-05 21:50:15.714 DEBUG 12074 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    insert 
+    into
+        member
+        (city, street, zipcode, name, member_id) 
+    values
+        (?, ?, ?, ?, ?)
+2020-01-05 21:50:15.715 TRACE 12074 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [null]
+2020-01-05 21:50:15.715 TRACE 12074 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [null]
+2020-01-05 21:50:15.715 TRACE 12074 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [null]
+2020-01-05 21:50:15.715 TRACE 12074 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [yeonbn]
+2020-01-05 21:50:15.715 TRACE 12074 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [1]
+2020-01-05 21:50:15.717  INFO 12074 --- [http-nio-8080-exec-4] p6spy                                    : #1578228615717 | took 1ms | statement | connection 43| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+insert into member (city, street, zipcode, name, member_id) values (?, ?, ?, ?, ?)
+insert into member (city, street, zipcode, name, member_id) values (NULL, NULL, NULL, 'yeonbn', 1);
+2020-01-05 21:50:15.718  INFO 12074 --- [http-nio-8080-exec-4] p6spy                                    : #1578228615718 | took 0ms | commit | connection 43| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+;
+2020-01-05 22:10:51.278  INFO 12074 --- [Thread-57] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-05 22:10:51.282  INFO 12074 --- [Thread-57] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-01-05 22:10:51.285 TRACE 12074 --- [Thread-57] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryClosed from [org.hibernate.internal.SessionFactoryImpl@54ccb272] for TypeConfiguration
+2020-01-05 22:10:51.286 DEBUG 12074 --- [Thread-57] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@17280a36] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@54ccb272]
+2020-01-05 22:10:51.296  INFO 12074 --- [Thread-57] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
+2020-01-05 22:10:51.374  INFO 12074 --- [Thread-57] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
+2020-01-05 22:10:52.265  INFO 12074 --- [restartedMain] jpabook.jpashop.Application              : Starting Application on jeong-yeonbins-MacBook-Pro.local with PID 12074 (/Users/yeonbn88/IdeaProjects/JPA/jpashop/build/classes/java/main started by yeonbn88 in /Users/yeonbn88/IdeaProjects/JPA/jpashop)
+2020-01-05 22:10:52.265  INFO 12074 --- [restartedMain] jpabook.jpashop.Application              : No active profile set, falling back to default profiles: default
+2020-01-05 22:10:54.185  INFO 12074 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-05 22:10:54.249  INFO 12074 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64ms. Found 1 JPA repository interfaces.
+2020-01-05 22:10:54.540  INFO 12074 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$eed0177b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-05 22:10:55.310  INFO 12074 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-05 22:10:55.311  INFO 12074 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-05 22:10:55.312  INFO 12074 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-05 22:10:55.343  INFO 12074 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-05 22:10:55.344  INFO 12074 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3074 ms
+2020-01-05 22:10:56.017  INFO 12074 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Starting...
+2020-01-05 22:10:56.139  INFO 12074 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Start completed.
+2020-01-05 22:10:56.221  INFO 12074 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-01-05 22:10:56.226 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@4e032d8f
+2020-01-05 22:10:56.226 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@4e032d8f
+2020-01-05 22:10:56.226 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@4e032d8f
+2020-01-05 22:10:56.226 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@6de86b80
+2020-01-05 22:10:56.226 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@596b6b10
+2020-01-05 22:10:56.226 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@7b7af097
+2020-01-05 22:10:56.226 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@1a8f0865
+2020-01-05 22:10:56.226 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@1a8f0865
+2020-01-05 22:10:56.226 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@1a8f0865
+2020-01-05 22:10:56.226 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@2f4d0225
+2020-01-05 22:10:56.226 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@2f4d0225
+2020-01-05 22:10:56.226 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@2f4d0225
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@61a851d
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@61a851d
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@61a851d
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@5c8ed703
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@5c8ed703
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@5c8ed703
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@450f7328
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@450f7328
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@450f7328
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@1c573b25
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@1c573b25
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@1c573b25
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@654aeaca
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@654aeaca
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@654aeaca
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@280ce308
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@280ce308
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@51b58f36
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@51b58f36
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@78615d77
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@78615d77
+2020-01-05 22:10:56.227 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@41e1a4b4
+2020-01-05 22:10:56.228 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@50248125
+2020-01-05 22:10:56.228 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@2f09f4c9
+2020-01-05 22:10:56.228 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@2f09f4c9
+2020-01-05 22:10:56.228 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@6ae756bc
+2020-01-05 22:10:56.228 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@6ae756bc
+2020-01-05 22:10:56.228 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@b110f61
+2020-01-05 22:10:56.228 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@b110f61
+2020-01-05 22:10:56.228 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@427ca042
+2020-01-05 22:10:56.228 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@427ca042
+2020-01-05 22:10:56.229 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@3ec80299
+2020-01-05 22:10:56.229 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@3ec80299
+2020-01-05 22:10:56.233 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@5771a6ce
+2020-01-05 22:10:56.233 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@5771a6ce
+2020-01-05 22:10:56.234 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@6306f7dd
+2020-01-05 22:10:56.234 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@6306f7dd
+2020-01-05 22:10:56.235 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@2a16ccf9
+2020-01-05 22:10:56.235 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@2a16ccf9
+2020-01-05 22:10:56.237 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@56c64b33
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@56c64b33
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@3505467b
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@3505467b
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@9b3a8cd
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@9b3a8cd
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@537f3f09
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@537f3f09
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@537f3f09
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@420d27cd
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@7b7e2cd0
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@7b7e2cd0
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@7b7e2cd0
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@41aa469f
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@5c29f5c4
+2020-01-05 22:10:56.238 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@5c29f5c4
+2020-01-05 22:10:56.239 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@3dd64e4c
+2020-01-05 22:10:56.241 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@3dd64e4c
+2020-01-05 22:10:56.241 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@f8afa1d
+2020-01-05 22:10:56.241 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@f8afa1d
+2020-01-05 22:10:56.241 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@3ff2764a
+2020-01-05 22:10:56.241 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@3ff2764a
+2020-01-05 22:10:56.241 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@59a7604a
+2020-01-05 22:10:56.262 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@59a7604a
+2020-01-05 22:10:56.262 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@13e1e848
+2020-01-05 22:10:56.262 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@9a60e75
+2020-01-05 22:10:56.262 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@9a60e75
+2020-01-05 22:10:56.262 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@9a60e75
+2020-01-05 22:10:56.262 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@27bace7f
+2020-01-05 22:10:56.262 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@27bace7f
+2020-01-05 22:10:56.262 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@27bace7f
+2020-01-05 22:10:56.262 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@6cdb0c99
+2020-01-05 22:10:56.262 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@19b2e333
+2020-01-05 22:10:56.262 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@7b0bf551
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@7b0bf551
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@7b0bf551
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@71f529e4
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@71f529e4
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@71f529e4
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@4326570
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@4aeeb2e2
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@31b90d62
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@31b90d62
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@56a3520a
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@7944771c
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@7944771c
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@44832b80
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@44832b80
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@2cfb559d
+2020-01-05 22:10:56.263 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@4905d6f2
+2020-01-05 22:10:56.264 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@e189bde
+2020-01-05 22:10:56.264 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@4a6a03ed
+2020-01-05 22:10:56.264 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@4a6a03ed
+2020-01-05 22:10:56.264 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@30dc995b
+2020-01-05 22:10:56.264 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@1b955104
+2020-01-05 22:10:56.264 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@5803378
+2020-01-05 22:10:56.264 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@5a697353
+2020-01-05 22:10:56.264 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@eab3f04
+2020-01-05 22:10:56.264 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@3f8752a4
+2020-01-05 22:10:56.264 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@3b98bddf
+2020-01-05 22:10:56.264 DEBUG 12074 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@2afaa214
+2020-01-05 22:10:56.278  INFO 12074 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-01-05 22:10:56.306 DEBUG 12074 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@77f4607e] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@3ae10b88]
+2020-01-05 22:10:56.374 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.DeleveryStatus
+2020-01-05 22:10:56.375 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.OrderStatus
+2020-01-05 22:10:56.378 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.DeleveryStatus
+2020-01-05 22:10:56.378 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.OrderStatus
+2020-01-05 22:10:56.426 DEBUG 12074 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@77f4607e] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@75abaec9]
+2020-01-05 22:10:56.481 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.DeleveryStatus
+2020-01-05 22:10:56.481 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.DeleveryStatus
+2020-01-05 22:10:56.492 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.DeleveryStatus
+2020-01-05 22:10:56.492 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.DeleveryStatus
+2020-01-05 22:10:56.567 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.OrderStatus
+2020-01-05 22:10:56.567 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.OrderStatus
+2020-01-05 22:10:56.575 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.OrderStatus
+2020-01-05 22:10:56.575 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.OrderStatus
+2020-01-05 22:10:56.613 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.DeleveryStatus
+2020-01-05 22:10:56.613 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.DeleveryStatus
+2020-01-05 22:10:56.627 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.OrderStatus
+2020-01-05 22:10:56.628 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.OrderStatus
+2020-01-05 22:10:56.633 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    drop table academy if exists
+2020-01-05 22:10:56.637  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856637 | took 3ms | statement | connection 46| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    drop table academy if exists
+
+    drop table academy if exists;
+2020-01-05 22:10:56.637 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    drop table category if exists
+2020-01-05 22:10:56.638  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856638 | took 0ms | statement | connection 46| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    drop table category if exists
+
+    drop table category if exists;
+2020-01-05 22:10:56.638 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    drop table category_item if exists
+2020-01-05 22:10:56.638  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856638 | took 0ms | statement | connection 46| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    drop table category_item if exists
+
+    drop table category_item if exists;
+2020-01-05 22:10:56.639 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    drop table delivery if exists
+2020-01-05 22:10:56.639  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856639 | took 0ms | statement | connection 46| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    drop table delivery if exists
+
+    drop table delivery if exists;
+2020-01-05 22:10:56.639 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    drop table item if exists
+2020-01-05 22:10:56.640  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856640 | took 0ms | statement | connection 46| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    drop table item if exists
+
+    drop table item if exists;
+2020-01-05 22:10:56.640 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    drop table member if exists
+2020-01-05 22:10:56.641  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856641 | took 0ms | statement | connection 46| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    drop table member if exists
+
+    drop table member if exists;
+2020-01-05 22:10:56.641 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    drop table order_item if exists
+2020-01-05 22:10:56.642  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856642 | took 0ms | statement | connection 46| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    drop table order_item if exists
+
+    drop table order_item if exists;
+2020-01-05 22:10:56.642 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    drop table orders if exists
+2020-01-05 22:10:56.643  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856643 | took 1ms | statement | connection 46| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    drop table orders if exists
+
+    drop table orders if exists;
+2020-01-05 22:10:56.643 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    drop table subject if exists
+2020-01-05 22:10:56.644  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856644 | took 0ms | statement | connection 46| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    drop table subject if exists
+
+    drop table subject if exists;
+2020-01-05 22:10:56.645 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    drop table teacher if exists
+2020-01-05 22:10:56.645  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856645 | took 0ms | statement | connection 46| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    drop table teacher if exists
+
+    drop table teacher if exists;
+2020-01-05 22:10:56.645 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    drop sequence if exists hibernate_sequence
+2020-01-05 22:10:56.646  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856646 | took 0ms | statement | connection 46| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    drop sequence if exists hibernate_sequence
+
+    drop sequence if exists hibernate_sequence;
+2020-01-05 22:10:56.646 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : create sequence hibernate_sequence start with 1 increment by 1
+2020-01-05 22:10:56.647  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856647 | took 0ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+create sequence hibernate_sequence start with 1 increment by 1
+create sequence hibernate_sequence start with 1 increment by 1;
+2020-01-05 22:10:56.648 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table academy (
+       id bigint not null,
+        academy_name varchar(255),
+        primary key (id)
+    )
+2020-01-05 22:10:56.651  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856651 | took 3ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    create table academy (
+       id bigint not null,
+        academy_name varchar(255),
+        primary key (id)
+    )
+
+    create table academy (
+       id bigint not null,
+        academy_name varchar(255),
+        primary key (id)
+    );
+2020-01-05 22:10:56.651 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table category (
+       category_id bigint not null,
+        name varchar(255),
+        parent_id bigint,
+        primary key (category_id)
+    )
+2020-01-05 22:10:56.653  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856653 | took 1ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    create table category (
+       category_id bigint not null,
+        name varchar(255),
+        parent_id bigint,
+        primary key (category_id)
+    )
+
+    create table category (
+       category_id bigint not null,
+        name varchar(255),
+        parent_id bigint,
+        primary key (category_id)
+    );
+2020-01-05 22:10:56.653 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table category_item (
+       category_id bigint not null,
+        item_id bigint not null
+    )
+2020-01-05 22:10:56.653  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856653 | took 0ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    create table category_item (
+       category_id bigint not null,
+        item_id bigint not null
+    )
+
+    create table category_item (
+       category_id bigint not null,
+        item_id bigint not null
+    );
+2020-01-05 22:10:56.654 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.DeleveryStatus
+2020-01-05 22:10:56.654 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table delivery (
+       delivery_id bigint not null,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        status varchar(255),
+        primary key (delivery_id)
+    )
+2020-01-05 22:10:56.654  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856654 | took 0ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    create table delivery (
+       delivery_id bigint not null,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        status varchar(255),
+        primary key (delivery_id)
+    )
+
+    create table delivery (
+       delivery_id bigint not null,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        status varchar(255),
+        primary key (delivery_id)
+    );
+2020-01-05 22:10:56.655 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table item (
+       dtype varchar(31) not null,
+        item_id bigint not null,
+        name varchar(255),
+        price integer not null,
+        stock_quantity integer not null,
+        actor varchar(255),
+        director varchar(255),
+        author varchar(255),
+        isbn varchar(255),
+        artist varchar(255),
+        etc varchar(255),
+        primary key (item_id)
+    )
+2020-01-05 22:10:56.655  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856655 | took 0ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    create table item (
+       dtype varchar(31) not null,
+        item_id bigint not null,
+        name varchar(255),
+        price integer not null,
+        stock_quantity integer not null,
+        actor varchar(255),
+        director varchar(255),
+        author varchar(255),
+        isbn varchar(255),
+        artist varchar(255),
+        etc varchar(255),
+        primary key (item_id)
+    )
+
+    create table item (
+       dtype varchar(31) not null,
+        item_id bigint not null,
+        name varchar(255),
+        price integer not null,
+        stock_quantity integer not null,
+        actor varchar(255),
+        director varchar(255),
+        author varchar(255),
+        isbn varchar(255),
+        artist varchar(255),
+        etc varchar(255),
+        primary key (item_id)
+    );
+2020-01-05 22:10:56.655 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table member (
+       member_id bigint not null,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        name varchar(255),
+        primary key (member_id)
+    )
+2020-01-05 22:10:56.656  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856656 | took 0ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    create table member (
+       member_id bigint not null,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        name varchar(255),
+        primary key (member_id)
+    )
+
+    create table member (
+       member_id bigint not null,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        name varchar(255),
+        primary key (member_id)
+    );
+2020-01-05 22:10:56.656 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table order_item (
+       order_item_id bigint not null,
+        count integer not null,
+        order_price integer not null,
+        item_id bigint,
+        order_id bigint,
+        primary key (order_item_id)
+    )
+2020-01-05 22:10:56.657  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856657 | took 0ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    create table order_item (
+       order_item_id bigint not null,
+        count integer not null,
+        order_price integer not null,
+        item_id bigint,
+        order_id bigint,
+        primary key (order_item_id)
+    )
+
+    create table order_item (
+       order_item_id bigint not null,
+        count integer not null,
+        order_price integer not null,
+        item_id bigint,
+        order_id bigint,
+        primary key (order_item_id)
+    );
+2020-01-05 22:10:56.658 DEBUG 12074 --- [restartedMain] org.hibernate.type.EnumType              : Using NAMED-based conversion for Enum jpabook.jpashop.status.OrderStatus
+2020-01-05 22:10:56.658 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table orders (
+       order_id bigint not null,
+        order_date timestamp,
+        order_status varchar(255),
+        delivery_id bigint,
+        member_id bigint,
+        primary key (order_id)
+    )
+2020-01-05 22:10:56.659  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856659 | took 0ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    create table orders (
+       order_id bigint not null,
+        order_date timestamp,
+        order_status varchar(255),
+        delivery_id bigint,
+        member_id bigint,
+        primary key (order_id)
+    )
+
+    create table orders (
+       order_id bigint not null,
+        order_date timestamp,
+        order_status varchar(255),
+        delivery_id bigint,
+        member_id bigint,
+        primary key (order_id)
+    );
+2020-01-05 22:10:56.659 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table subject (
+       id bigint not null,
+        subject_name varchar(255),
+        academy_id bigint,
+        teacher_id bigint,
+        primary key (id)
+    )
+2020-01-05 22:10:56.659  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856659 | took 0ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    create table subject (
+       id bigint not null,
+        subject_name varchar(255),
+        academy_id bigint,
+        teacher_id bigint,
+        primary key (id)
+    )
+
+    create table subject (
+       id bigint not null,
+        subject_name varchar(255),
+        academy_id bigint,
+        teacher_id bigint,
+        primary key (id)
+    );
+2020-01-05 22:10:56.660 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    create table teacher (
+       id bigint not null,
+        teacher_name varchar(255),
+        primary key (id)
+    )
+2020-01-05 22:10:56.660  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856660 | took 0ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    create table teacher (
+       id bigint not null,
+        teacher_name varchar(255),
+        primary key (id)
+    )
+
+    create table teacher (
+       id bigint not null,
+        teacher_name varchar(255),
+        primary key (id)
+    );
+2020-01-05 22:10:56.661 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table category 
+       add constraint FK2y94svpmqttx80mshyny85wqr 
+       foreign key (parent_id) 
+       references category
+2020-01-05 22:10:56.665  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856665 | took 3ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    alter table category 
+       add constraint FK2y94svpmqttx80mshyny85wqr 
+       foreign key (parent_id) 
+       references category
+
+    alter table category 
+       add constraint FK2y94svpmqttx80mshyny85wqr 
+       foreign key (parent_id) 
+       references category;
+2020-01-05 22:10:56.665 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table category_item 
+       add constraint FKu8b4lwqutcdq3363gf6mlujq 
+       foreign key (item_id) 
+       references item
+2020-01-05 22:10:56.670  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856670 | took 5ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    alter table category_item 
+       add constraint FKu8b4lwqutcdq3363gf6mlujq 
+       foreign key (item_id) 
+       references item
+
+    alter table category_item 
+       add constraint FKu8b4lwqutcdq3363gf6mlujq 
+       foreign key (item_id) 
+       references item;
+2020-01-05 22:10:56.671 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table category_item 
+       add constraint FKcq2n0opf5shyh84ex1fhukcbh 
+       foreign key (category_id) 
+       references category
+2020-01-05 22:10:56.672  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856672 | took 1ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    alter table category_item 
+       add constraint FKcq2n0opf5shyh84ex1fhukcbh 
+       foreign key (category_id) 
+       references category
+
+    alter table category_item 
+       add constraint FKcq2n0opf5shyh84ex1fhukcbh 
+       foreign key (category_id) 
+       references category;
+2020-01-05 22:10:56.673 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table order_item 
+       add constraint FKija6hjjiit8dprnmvtvgdp6ru 
+       foreign key (item_id) 
+       references item
+2020-01-05 22:10:56.674  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856674 | took 1ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    alter table order_item 
+       add constraint FKija6hjjiit8dprnmvtvgdp6ru 
+       foreign key (item_id) 
+       references item
+
+    alter table order_item 
+       add constraint FKija6hjjiit8dprnmvtvgdp6ru 
+       foreign key (item_id) 
+       references item;
+2020-01-05 22:10:56.674 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table order_item 
+       add constraint FKt4dc2r9nbvbujrljv3e23iibt 
+       foreign key (order_id) 
+       references orders
+2020-01-05 22:10:56.676  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856676 | took 1ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    alter table order_item 
+       add constraint FKt4dc2r9nbvbujrljv3e23iibt 
+       foreign key (order_id) 
+       references orders
+
+    alter table order_item 
+       add constraint FKt4dc2r9nbvbujrljv3e23iibt 
+       foreign key (order_id) 
+       references orders;
+2020-01-05 22:10:56.676 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table orders 
+       add constraint FKtkrur7wg4d8ax0pwgo0vmy20c 
+       foreign key (delivery_id) 
+       references delivery
+2020-01-05 22:10:56.678  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856678 | took 1ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    alter table orders 
+       add constraint FKtkrur7wg4d8ax0pwgo0vmy20c 
+       foreign key (delivery_id) 
+       references delivery
+
+    alter table orders 
+       add constraint FKtkrur7wg4d8ax0pwgo0vmy20c 
+       foreign key (delivery_id) 
+       references delivery;
+2020-01-05 22:10:56.678 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table orders 
+       add constraint FKpktxwhj3x9m4gth5ff6bkqgeb 
+       foreign key (member_id) 
+       references member
+2020-01-05 22:10:56.679  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856679 | took 1ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    alter table orders 
+       add constraint FKpktxwhj3x9m4gth5ff6bkqgeb 
+       foreign key (member_id) 
+       references member
+
+    alter table orders 
+       add constraint FKpktxwhj3x9m4gth5ff6bkqgeb 
+       foreign key (member_id) 
+       references member;
+2020-01-05 22:10:56.680 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table subject 
+       add constraint FK_SUBJECT_ACADEMY 
+       foreign key (academy_id) 
+       references academy
+2020-01-05 22:10:56.681  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856681 | took 1ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    alter table subject 
+       add constraint FK_SUBJECT_ACADEMY 
+       foreign key (academy_id) 
+       references academy
+
+    alter table subject 
+       add constraint FK_SUBJECT_ACADEMY 
+       foreign key (academy_id) 
+       references academy;
+2020-01-05 22:10:56.681 DEBUG 12074 --- [restartedMain] org.hibernate.SQL                        : 
+    
+    alter table subject 
+       add constraint FK_SUBJECT_TEACHER 
+       foreign key (teacher_id) 
+       references teacher
+2020-01-05 22:10:56.683  INFO 12074 --- [restartedMain] p6spy                                    : #1578229856683 | took 1ms | statement | connection 47| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+    alter table subject 
+       add constraint FK_SUBJECT_TEACHER 
+       foreign key (teacher_id) 
+       references teacher
+
+    alter table subject 
+       add constraint FK_SUBJECT_TEACHER 
+       foreign key (teacher_id) 
+       references teacher;
+2020-01-05 22:10:56.684  INFO 12074 --- [restartedMain] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@248538b3'
+2020-01-05 22:10:56.684 TRACE 12074 --- [restartedMain] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@75abaec9] for TypeConfiguration
+2020-01-05 22:10:56.684  INFO 12074 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-05 22:10:56.856  INFO 12074 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-01-05 22:10:57.169  INFO 12074 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2020-01-05 22:10:57.833  INFO 12074 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-05 22:10:57.854  WARN 12074 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-05 22:10:57.907  INFO 12074 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2020-01-05 22:10:58.407  INFO 12074 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-01-05 22:10:58.408  INFO 12074 --- [restartedMain] jpabook.jpashop.Application              : Started Application in 6.409 seconds (JVM running for 6300.396)
+2020-01-05 22:10:58.412  INFO 12074 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-01-05 22:11:10.039  INFO 12074 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-05 22:11:10.040  INFO 12074 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-05 22:11:10.049  INFO 12074 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2020-01-05 22:11:10.079 DEBUG 12074 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        member0_.member_id as member_i1_5_,
+        member0_.city as city2_5_,
+        member0_.street as street3_5_,
+        member0_.zipcode as zipcode4_5_,
+        member0_.name as name5_5_ 
+    from
+        member member0_ 
+    where
+        member0_.name=?
+2020-01-05 22:11:10.080 TRACE 12074 --- [http-nio-8080-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [yeonbn]
+2020-01-05 22:11:10.081  INFO 12074 --- [http-nio-8080-exec-1] p6spy                                    : #1578229870081 | took 0ms | statement | connection 48| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+select member0_.member_id as member_i1_5_, member0_.city as city2_5_, member0_.street as street3_5_, member0_.zipcode as zipcode4_5_, member0_.name as name5_5_ from member member0_ where member0_.name=?
+select member0_.member_id as member_i1_5_, member0_.city as city2_5_, member0_.street as street3_5_, member0_.zipcode as zipcode4_5_, member0_.name as name5_5_ from member member0_ where member0_.name='yeonbn';
+2020-01-05 22:11:10.086 DEBUG 12074 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2020-01-05 22:11:10.088  INFO 12074 --- [http-nio-8080-exec-1] p6spy                                    : #1578229870088 | took 1ms | statement | connection 48| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2020-01-05 22:11:10.090 DEBUG 12074 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    insert 
+    into
+        member
+        (city, street, zipcode, name, member_id) 
+    values
+        (?, ?, ?, ?, ?)
+2020-01-05 22:11:10.090 TRACE 12074 --- [http-nio-8080-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [null]
+2020-01-05 22:11:10.091 TRACE 12074 --- [http-nio-8080-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [null]
+2020-01-05 22:11:10.091 TRACE 12074 --- [http-nio-8080-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [null]
+2020-01-05 22:11:10.091 TRACE 12074 --- [http-nio-8080-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [yeonbn]
+2020-01-05 22:11:10.091 TRACE 12074 --- [http-nio-8080-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [1]
+2020-01-05 22:11:10.091  INFO 12074 --- [http-nio-8080-exec-1] p6spy                                    : #1578229870091 | took 0ms | statement | connection 48| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+insert into member (city, street, zipcode, name, member_id) values (?, ?, ?, ?, ?)
+insert into member (city, street, zipcode, name, member_id) values (NULL, NULL, NULL, 'yeonbn', 1);
+2020-01-05 22:11:10.092  INFO 12074 --- [http-nio-8080-exec-1] p6spy                                    : #1578229870092 | took 0ms | commit | connection 48| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+;
+2020-01-05 22:11:26.520 DEBUG 12074 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        member0_.member_id as member_i1_5_0_,
+        member0_.city as city2_5_0_,
+        member0_.street as street3_5_0_,
+        member0_.zipcode as zipcode4_5_0_,
+        member0_.name as name5_5_0_ 
+    from
+        member member0_ 
+    where
+        member0_.member_id=?
+2020-01-05 22:11:26.521 TRACE 12074 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2020-01-05 22:11:26.522  INFO 12074 --- [http-nio-8080-exec-3] p6spy                                    : #1578229886522 | took 0ms | statement | connection 49| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+select member0_.member_id as member_i1_5_0_, member0_.city as city2_5_0_, member0_.street as street3_5_0_, member0_.zipcode as zipcode4_5_0_, member0_.name as name5_5_0_ from member member0_ where member0_.member_id=?
+select member0_.member_id as member_i1_5_0_, member0_.city as city2_5_0_, member0_.street as street3_5_0_, member0_.zipcode as zipcode4_5_0_, member0_.name as name5_5_0_ from member member0_ where member0_.member_id=1;
+2020-01-05 22:11:26.536 TRACE 12074 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([city2_5_0_] : [VARCHAR]) - [null]
+2020-01-05 22:11:26.536 TRACE 12074 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([street3_5_0_] : [VARCHAR]) - [null]
+2020-01-05 22:11:26.536 TRACE 12074 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([zipcode4_5_0_] : [VARCHAR]) - [null]
+2020-01-05 22:11:26.536 TRACE 12074 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_5_0_] : [VARCHAR]) - [yeonbn]
+2020-01-05 22:11:26.540 TRACE 12074 --- [http-nio-8080-exec-3] org.hibernate.type.CollectionType        : Created collection wrapper: [jpabook.jpashop.domain.Member.orders#1]
+2020-01-05 22:11:26.543 DEBUG 12074 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    update
+        member 
+    set
+        city=?,
+        street=?,
+        zipcode=?,
+        name=? 
+    where
+        member_id=?
+2020-01-05 22:11:26.549 TRACE 12074 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [null]
+2020-01-05 22:11:26.550 TRACE 12074 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [null]
+2020-01-05 22:11:26.550 TRACE 12074 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [null]
+2020-01-05 22:11:26.550 TRACE 12074 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [yeonbn1]
+2020-01-05 22:11:26.550 TRACE 12074 --- [http-nio-8080-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [1]
+2020-01-05 22:11:26.551  INFO 12074 --- [http-nio-8080-exec-3] p6spy                                    : #1578229886551 | took 0ms | statement | connection 49| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+update member set city=?, street=?, zipcode=?, name=? where member_id=?
+update member set city=NULL, street=NULL, zipcode=NULL, name='yeonbn1' where member_id=1;
+2020-01-05 22:11:26.552  INFO 12074 --- [http-nio-8080-exec-3] p6spy                                    : #1578229886552 | took 0ms | commit | connection 49| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+;
+2020-01-05 22:11:26.562  INFO 12074 --- [http-nio-8080-exec-3] p6spy                                    : #1578229886562 | took 0ms | commit | connection 49| url jdbc:h2:tcp://localhost/~/IdeaProjects/JPA/jpashop
+
+;
