@@ -21,7 +21,7 @@ public class Category {
     private String name;
 
     @ManyToMany
-    @JoinTable(name = "catetory_item",
+    @JoinTable(name = "category_item",
             joinColumns = @JoinColumn(name = "category_id"),
             inverseJoinColumns = @JoinColumn(name = "item_id")
     )

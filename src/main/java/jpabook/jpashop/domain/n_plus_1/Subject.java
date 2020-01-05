@@ -15,6 +15,7 @@ public class Subject {
     @GeneratedValue
     private Long id;
 
+    @Column(name = "subject_name")
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)

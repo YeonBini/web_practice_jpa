@@ -17,6 +17,7 @@ configurations {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -26,16 +27,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-devtools'
     compileOnly 'org.projectlombok:lombok'
     testCompileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.h2database:h2'
+    runtimeOnly group: 'com.h2database', name: 'h2', version: '1.4.199'
     annotationProcessor 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compile('com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.8')
     compile('com.querydsl:querydsl-jpa')
     compile('com.querydsl:querydsl-apt')
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.4'
-
+    compile 'com.github.kimkevin:hangulparser:1.0.0'
 }
 
 def querydslSrcDir = 'src/main/generated'

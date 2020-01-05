@@ -5,16 +5,23 @@ spring:
     password:
     driver-class-name: org.h2.Driver
     initialization-mode: always
-
+  output:
+    ansi:
+      enabled: never
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
 #        show_sql : true
         format_sql : true
+    generate-ddl: true
 
 logging:
   level:
+    root : info
     org.hibernate.SQL : debug
     org.hibernate.type : trace
+  file: myApp.log
+
+

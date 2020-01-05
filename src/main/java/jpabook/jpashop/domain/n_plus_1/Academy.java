@@ -16,6 +16,7 @@ public class Academy {
     @GeneratedValue
     private Long id;
 
+    @Column(name = "academy_name")
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL)

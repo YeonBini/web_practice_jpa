@@ -1,8 +1,6 @@
-package jpabook.config;
+package jpabook.jpashop.config;
 
 import org.springframework.context.annotation.Configuration;
-
-import javax.persistence.PersistenceContext;
 
 @Configuration
 public class QueryDslConfig {
