@@ -1,10 +1,10 @@
 package jpabook.jpashop.repository;
 
-import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jpabook.jpashop.domain.*;
 import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryDto;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ import static jpabook.jpashop.domain.QOrder.order;
 
 @Repository
 @RequiredArgsConstructor
-public class OrderRepository  {
+public class OrderRepository {
     Logger logger = LoggerFactory.getLogger(OrderRepository.class);
 
     private final EntityManager em;
@@ -61,11 +61,11 @@ public class OrderRepository  {
         JPAQuery<Order> orderJPAQuery = jpaQueryFactory.selectFrom(order)
                 .innerJoin(order.member, member);
 
-        if(orderSearch.getOrderStatus() != null) {
+        if (orderSearch.getOrderStatus() != null) {
             orderJPAQuery = orderJPAQuery.where(order.orderStatus.eq(orderSearch.getOrderStatus()));
         }
 
-        if(orderSearch.getMemberName() != null) {
+        if (orderSearch.getMemberName() != null) {
             orderJPAQuery = orderJPAQuery.where(member.name.like(orderSearch.getMemberName()));
         }
         return orderJPAQuery.fetch();
@@ -79,14 +79,14 @@ public class OrderRepository  {
 
         List<Predicate> criteria = new ArrayList<>();
 
-        if(orderSearch.getOrderStatus() != null) {
+        if (orderSearch.getOrderStatus() != null) {
             Predicate status = cb.equal(o.get("orderStatus"), orderSearch.getOrderStatus());
             logger.info("order status : " + status);
             criteria.add(status);
         }
 
-        if(StringUtils.hasText(orderSearch.getMemberName())) {
-            Predicate name = cb.like(m.get("name"), "%"+orderSearch.getMemberName()+"%");
+        if (StringUtils.hasText(orderSearch.getMemberName())) {
+            Predicate name = cb.like(m.get("name"), "%" + orderSearch.getMemberName() + "%");
             criteria.add(name);
         }
 
@@ -99,9 +99,25 @@ public class OrderRepository  {
 
     public List<Order> findAllWithMemberAndAddress() {
         return em.createQuery(
-                "select o from Order o " +
-                        "join fetch o.member m " +
-                        "join fetch o.delivery d", Order.class
+                "select distinct o from Order o " +
+                        "left join fetch o.member m " +
+                        "left join fetch o.delivery d " +
+                        "join fetch o.orderItemList", Order.class
         ).getResultList();
     }
+
+    /**
+     * 성능을 최적화 시키고자 하였으나,
+     * Repository가 화면단의 로직에 의존을 하고 있는 격.
+     * 화면단 로직에 의존적이며, 재사용성에 한계가 분명하다.
+     * @return
+     */
+//    public List<OrderSimpleQueryDto> findOrderDtos() {
+//        return em.createQuery(
+//                "select new jpabook.jpashop.repository.OrderSimpleQueryDto(o.id, m.name, o.orderDate, o.orderStatus , d.address) " +
+//                        " from Order o" +
+//                        " join o.member m" +
+//                        " join o.delivery d", OrderSimpleQueryDto.class
+//        ).getResultList();
+//    }
 }
