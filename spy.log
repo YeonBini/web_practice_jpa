@@ -4,3 +4,4 @@
 1576831504310|206|statement|connection 20|url jdbc:h2:mem:test|SHUTDOWN|SHUTDOWN
 1576831598870|205|statement|connection 19|url jdbc:h2:mem:test|SHUTDOWN|SHUTDOWN
 1577010386661|5|statement|connection 19|url jdbc:h2:mem:test|SHUTDOWN|SHUTDOWN
+1578231355787|1|statement|connection 19|url jdbc:h2:mem:test|SHUTDOWN|SHUTDOWN

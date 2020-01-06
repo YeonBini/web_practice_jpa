@@ -7,18 +7,41 @@ import jpabook.jpashop.service.MemberService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
 public class MemberApiController {
 
     private final MemberService memberService;
+
+    @GetMapping("/api/V2/members")
+    public Result membersV2() {
+        List<Member> findMembers = memberService.findMembers();
+        List<MembersDto> membersDtoList = findMembers.stream()
+                .map(m -> new MembersDto(m.getName()))
+                .collect(Collectors.toList());
+
+        return new Result(membersDtoList.size(), membersDtoList);
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class Result<T> {
+        private int count;
+        private T data;
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class MembersDto {
+        private String name;
+    }
 
     @PutMapping("/api/V2/members/{id}")
     public UpdateMemberResponse updateMemberV2(@PathVariable("id") Long id,
