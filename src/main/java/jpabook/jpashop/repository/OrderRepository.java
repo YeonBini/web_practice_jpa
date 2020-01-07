@@ -99,11 +99,33 @@ public class OrderRepository {
 
     public List<Order> findAllWithMemberAndAddress() {
         return em.createQuery(
-                "select distinct o from Order o " +
+                "select o from Order o " +
                         "left join fetch o.member m " +
-                        "left join fetch o.delivery d " +
-                        "join fetch o.orderItemList", Order.class
+                        "left join fetch o.delivery d ", Order.class
         ).getResultList();
+    }
+
+    public List<Order> findAllByItems() {
+        return em.createQuery(
+                "select distinct o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d" +
+                        " join fetch o.orderItemList l" +
+                        " join fetch l.item i", Order.class
+        )
+                .setFirstResult(1)
+                .setMaxResults(100)
+                .getResultList();
+    }
+
+    public List<Order> findAllWithMemberAndAddress(int offset, int limit) {
+        return em.createQuery(
+                "select o from Order o " +
+                        "left join fetch o.member m " +
+                        "left join fetch o.delivery d ", Order.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
     }
 
     /**
