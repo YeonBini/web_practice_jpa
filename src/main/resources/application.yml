@@ -17,6 +17,7 @@ spring:
         format_sql : true
         default_batch_fetch_size : 100
     generate-ddl: true
+    open-in-view: false
 
 logging:
   level:
